@@ -182,12 +182,12 @@ void test_seperator_is_char(boost::function<std::vector<std::string>(const std::
     assert(v[0]=="a");
   }
   { //Two inputs, seperator of type char
-    const std::vector<std::string> v = seperate_string3("a,b",',');
+    const std::vector<std::string> v = f("a,b",',');
     assert(v[0]=="a");
     assert(v[1]=="b");
   }
   { //Five inputs, seperator of type char
-    const std::vector<std::string> v = seperate_string3("a,bb,ccc,dddd,eeeee",',');
+    const std::vector<std::string> v = f("a,bb,ccc,dddd,eeeee",',');
     assert(v[0]=="a");
     assert(v[1]=="bb");
     assert(v[2]=="ccc");
@@ -195,7 +195,7 @@ void test_seperator_is_char(boost::function<std::vector<std::string>(const std::
     assert(v[4]=="eeeee");
   }
   { //Three inputs, of which one empty, seperator of type char
-    const std::vector<std::string> v = seperate_string3("a, ,ccc",',');
+    const std::vector<std::string> v = f("a, ,ccc",',');
     assert(v[0]=="a");
     assert(v[1]==" ");
     assert(v[2]=="ccc");
