@@ -44,12 +44,4 @@ std::vector<std::string> seperate_string6(
   const std::string& seperator
 );
 
-void test_seperator_is_char(
-  boost::function<std::vector<std::string>(const std::string&, const char)> f
-);
-
-void test_seperator_is_string(
-  boost::function<std::vector<std::string>(const std::string&, const std::string&)> f
-);
-
 #endif //~SEPERATE_STRING_H

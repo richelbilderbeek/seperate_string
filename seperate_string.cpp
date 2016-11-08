@@ -35,10 +35,7 @@ std::vector<std::string> seperate_string2(
   for (
     std::string sub;
     std::getline(is, sub, seperator);
-    v.push_back(sub))
-  {
-    //Empty for loop
-  }
+    v.push_back(sub)) {} //!OCLINT indeed an empty for loop
   return v;
 }
 
@@ -155,94 +152,5 @@ std::vector<std::string> seperate_string6(
   }
   result.push_back(input);
   return result;
-}
-
-void test_seperator_is_char(boost::function<std::vector<std::string>(const std::string&, const char)> f)
-{
-  {
-    //#define THESE_WILL_FAIL_AND_SHOULD_FAIL
-    #ifdef THESE_WILL_FAIL_AND_SHOULD_FAIL
-    //Empty
-    const std::vector<std::string> v1 = f("",',');
-    //Seperator only
-    const std::vector<std::string> v2 = f(",",',');
-    //Single input, leading seperator
-    const std::vector<std::string> v3 = f(",a",',');
-    //Single input, trailing seperator
-    const std::vector<std::string> v4 = f("a,",',');
-    //Two inputs, leading seperator
-    const std::vector<std::string> v5 = f(",a,a",',');
-    //Two inputs, trailing seperator
-    const std::vector<std::string> v6 = f("a,a,",',');
-    #endif
-  }
-
-  { //Single input, seperator of type char
-    const std::vector<std::string> v = f("a",',');
-    assert(v[0]=="a");
-  }
-  { //Two inputs, seperator of type char
-    const std::vector<std::string> v = f("a,b",',');
-    assert(v[0]=="a");
-    assert(v[1]=="b");
-  }
-  { //Five inputs, seperator of type char
-    const std::vector<std::string> v = f("a,bb,ccc,dddd,eeeee",',');
-    assert(v[0]=="a");
-    assert(v[1]=="bb");
-    assert(v[2]=="ccc");
-    assert(v[3]=="dddd");
-    assert(v[4]=="eeeee");
-  }
-  { //Three inputs, of which one empty, seperator of type char
-    const std::vector<std::string> v = f("a, ,ccc",',');
-    assert(v[0]=="a");
-    assert(v[1]==" ");
-    assert(v[2]=="ccc");
-  }
-}
-
-void test_seperator_is_string(boost::function<std::vector<std::string>(const std::string&, const std::string&)> f)
-{
-  {
-    //#define THESE_WILL_FAIL_AND_SHOULD_FAIL
-    #ifdef THESE_WILL_FAIL_AND_SHOULD_FAIL
-    //Empty
-    const std::vector<std::string> v1 = f("",",");
-    //Seperator only
-    const std::vector<std::string> v2 = f(",",",");
-    //Single input, leading seperator
-    const std::vector<std::string> v3 = f(",a",",");
-    //Single input, trailing seperator
-    const std::vector<std::string> v4 = f("a,",",");
-    //Two inputs, leading seperator
-    const std::vector<std::string> v5 = f(",a,a",",");
-    //Two inputs, trailing seperator
-    const std::vector<std::string> v6 = f("a,a,",",");
-    #endif
-  }
-  { //Single input, seperator of type std::string
-    const std::vector<std::string> v = f("a",",");
-    assert(v[0]=="a");
-  }
-  { //Two inputs, seperator of type std::string
-    const std::vector<std::string> v = f("a,b",",");
-    assert(v[0]=="a");
-    assert(v[1]=="b");
-  }
-  { //Five inputs, seperator of type std::string
-    const std::vector<std::string> v = f("a,bb,ccc,dddd,eeeee",",");
-    assert(v[0]=="a");
-    assert(v[1]=="bb");
-    assert(v[2]=="ccc");
-    assert(v[3]=="dddd");
-    assert(v[4]=="eeeee");
-  }
-  { //Three inputs, of which one empty, seperator of type std::string
-    const std::vector<std::string> v = f("a, ,ccc",",");
-    assert(v[0]=="a");
-    assert(v[1]==" ");
-    assert(v[2]=="ccc");
-  }
 }
 
