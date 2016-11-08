@@ -1,0 +1,30 @@
+sudo: true
+language: cpp
+compiler: gcc
+addons: 
+  apt: 
+    packages: libboost-all-dev
+
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+  - sudo pip install codecov
+  - ./install_oclint.sh
+
+install: 
+  - sudo apt-get install -qq g++-5
+  - sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-5 90
+
+script: 
+  # Build test
+  - qmake
+  - make
+  - ./seperate_string
+  # Get code coverage
+  - ./get_code_cov.sh
+  - codecov
+  # Call OCLint
+  - ./do_oclint.sh
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
