@@ -154,3 +154,12 @@ std::vector<std::string> seperate_string6(
   return result;
 }
 
+std::vector<std::string> seperate_string7(
+  const std::string& input,
+  const char seperator
+)
+{
+  std::vector<std::string> v;
+  boost::algorithm::split(v, input, [seperator](const char c) { return c == seperator; } );
+  return v;
+}

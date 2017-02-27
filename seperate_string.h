@@ -44,4 +44,10 @@ std::vector<std::string> seperate_string6(
   const std::string& seperator
 );
 
+///Uses boost::algorithm::split
+std::vector<std::string> seperate_string7(
+  const std::string& input,
+  const char seperator
+);
+
 #endif //~SEPERATE_STRING_H
