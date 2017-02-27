@@ -24,7 +24,7 @@ install:
 script: 
   # Build test
   - qmake
-  - make
+  - make debug
   - ./seperate_string
   # Get code coverage
   - ./get_code_cov
