@@ -9,3 +9,6 @@
 [![codecov.io](https://codecov.io/github/richelbilderbeek/seperate_string/coverage.svg?branch=master)](https://codecov.io/github/richelbilderbeek/seperate_string?branch=master)
 
 C++ function to seperate a std::string.
+
+Consider reading [the Fluent C++ article 'How To Split a String in C++'](http://www.fluentcpp.com/2017/04/21/how-to-split-a-string-in-c)
+as there are other -possibly superior- options.
